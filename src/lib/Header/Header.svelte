@@ -1,7 +1,7 @@
 <script>
   import { page } from "$app/stores";
   import logo from "$lib/images/svelte-logo.svg";
-  import github from "$lib/images/github.svg";
+  import userIcon from "$lib/images/user.svg";
 </script>
 
 <header>
@@ -33,7 +33,7 @@
 
   <div class="corner">
     <a href="/account/login">
-      <img src={github} alt="GitHub" />
+      <img src={userIcon} alt="user icon" />
     </a>
   </div>
 </header>
