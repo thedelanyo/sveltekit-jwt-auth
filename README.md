@@ -1,2 +1,2 @@
 # sveltekit-jwt-auth
-Handling auth and authorization with JWT in sveltekit
+Handling authentication and authorization with JWT in sveltekit
