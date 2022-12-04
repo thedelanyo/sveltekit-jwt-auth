@@ -1,0 +1,104 @@
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul[class],
+ol[class],
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Set core root defaults */
+html {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-weight: var(--font-normal);
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove list styles on ul, ol elements with a class attribute */
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+a {
+  text-decoration-skip-ink: auto;
+  color: var(--sec-color);
+  text-decoration: none;
+  border-bottom: 0.1rem solid var(--sec-color);
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+  margin: 0;
+  padding: 0;
+  object-fit: cover;
+}
+
+img {
+  vertical-align: middle;
+}
+
+a,
+button,
+svg {
+  cursor: none;
+}
+
+::selection {
+  color: var(--white);
+  background-color: var(--prim-lite);
+}
+
+/* remove all animations and transitions for people that prefer not to use them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* mouse, touch pad */
+@media (hover: hover) and (pointer: fine) {
+  a,
+  button,
+  svg {
+    cursor: pointer;
+  }
+}

@@ -1,7 +1,8 @@
 <script>
   import { page } from "$app/stores";
   import logo from "$lib/images/svelte-logo.svg";
-  import userIcon from "$lib/images/user.svg";
+  import Svg from "$lib/Icons/svg.svelte";
+  import { userIcon } from "$lib/Icons/icons";
 </script>
 
 <header>
@@ -33,7 +34,7 @@
 
   <div class="corner">
     <a href="/account/login">
-      <img src={userIcon} alt="user icon" />
+      <Svg d={userIcon} heroIcon filled={false} />
     </a>
   </div>
 </header>
@@ -55,12 +56,15 @@
     justify-content: center;
     width: 100%;
     height: 100%;
+    border: none;
+    color: currentColor;
   }
 
   .corner img {
-    width: 2em;
-    height: 2em;
+    width: 1.8em;
+    height: 1.8em;
     object-fit: contain;
+    color: currentColor;
   }
 
   nav {
@@ -114,13 +118,15 @@
     height: 100%;
     align-items: center;
     padding: 0 0.5rem;
-    color: var(--color-text);
+    color: var(--text-color);
     font-weight: 700;
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     text-decoration: none;
     transition: color 0.2s linear;
+    text-decoration: none;
+    border: none;
   }
 
   a:hover {

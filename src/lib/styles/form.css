@@ -1,0 +1,180 @@
+form {
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+  width: 17rem;
+  gap: 3rem;
+}
+
+form.inline {
+  display: block;
+  width: initial;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: var(--metric-smallest) var(--metric-micro);
+  border-radius: var(--radius-sm);
+  display: block;
+  outline: none;
+  box-shadow: var(--shadow-inset);
+  background-color: inherit;
+  border: none;
+}
+
+textarea,
+select,
+input:not([type="checkbox"]):not([type="file"]):not([type="image"]):not([type="radio"]):not([type="range"]) {
+  font: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  color: inherit;
+}
+
+textarea:focus,
+input:not([type="checkbox"]):not([type="file"]):not([type="image"]):not([type="radio"]):not([type="range"]):focus {
+  outline: 0.1rem solid;
+}
+
+select {
+  appearance: none;
+  text-align: center;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+form button {
+  width: max-content;
+  margin-left: auto;
+  font: inherit;
+}
+
+textarea {
+  resize: none;
+}
+
+textarea::-webkit-scrollbar {
+  width: var(--metric-nano);
+}
+
+textarea::-webkit-scrollbar-track {
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-inset);
+}
+
+textarea::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 6px var(--sec-color);
+  border-radius: var(--radius-sm);
+}
+
+.flow-wide {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--metric-small);
+}
+
+.flow-wide.wrap {
+  flex-wrap: wrap;
+}
+
+form .mark {
+  color: var(--prim-lite);
+}
+
+.inline-control {
+  display: flex;
+}
+
+.inline-control > span {
+  padding: var(--metric-micro);
+  box-shadow: var(--shadow-inset);
+  display: block;
+  width: max-content;
+  border-start-end-radius: var(--radius-sm);
+  border-end-end-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.inline-control input {
+  flex: auto;
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+}
+
+.inline-control button {
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 1.6rem;
+  min-width: 2rem;
+}
+
+.radio {
+  box-shadow: var(--shadow-inset);
+  display: flex;
+  align-items: center;
+  gap: var(--metric-smallest);
+  padding: var(--metric-smallest);
+  border-radius: var(--radius-sm);
+}
+
+.radio label {
+  font-size: inherit;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: var(--metric-small);
+  height: var(--metric-small);
+  box-shadow: var(--shadow-inset);
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+}
+
+input[type="radio"]::before,
+input[type="checkbox"]::before {
+  content: "";
+  width: var(--metric-smallest);
+  height: var(--metric-smallest);
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--blue);
+  background-color: CanvasText;
+}
+
+input[type="radio"]:checked::before,
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+button:hover {
+  filter: brightness(1.05);
+}
+
+[contenteditable]::spelling-error,
+[contenteditable]::grammar-error,
+textarea::spelling-error,
+textarea::grammar-error,
+textarea[aria-invalid="spelling"],
+textarea[aria-invalid="grammar"],
+[contenteditable][aria-invalid="grammar"],
+[contenteditable][aria-invalid="spelling"] {
+  border-bottom: 0.15rem dotted red;
+}
+
+@media (min-width: 40em) {
+  input[type="file"] ~ label,
+  select,
+  .inline-control > span {
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,195 @@
+.full-bleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+.v-hidden,
+.mask {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: auto;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 500;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin message($bdColor) {
+  padding: 1rem var(--metric-smallest);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-micro);
+  display: flex;
+  align-items: center;
+  gap: var(--metric-smallest);
+  border-left: 0.5rem solid $bdColor;
+  box-shadow: var(--shadow-inset);
+  margin-block: var(--metric-small);
+
+  & p {
+    margin: 0;
+    color: inherit;
+  }
+}
+
+.success {
+  @include message(var(--success-shade));
+}
+
+.error {
+  @include message(var(--error-shade));
+}
+
+.info {
+  @include message(var(--info-shade));
+}
+
+.warn {
+  @include message(var(--warn-shade));
+}
+
+.strike {
+  text-decoration: line-through;
+  color: red;
+}
+
+[contenteditable] {
+  padding: var(--metric-smallest);
+  font-size: var(--font-micro);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-inset);
+  outline: none;
+}
+
+[contenteditable]:empty::before {
+  content: attr(data-placeholder);
+}
+
+.loading::after {
+  content: " .";
+  animation: loading 1s steps(5, end) infinite;
+}
+
+@keyframes loading {
+  0%,
+  20% {
+    color: rgba(0, 0, 0, 0);
+    text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0);
+  }
+
+  40% {
+    color: var(--success-shade);
+    text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0);
+  }
+
+  60% {
+    text-shadow: 0.25em 0 0 var(--success-shade), 0.5em 0 0 rgba(0, 0, 0, 0);
+  }
+
+  80%,
+  100% {
+    text-shadow: 0.25em 0 0 var(--success-shade), 0.5em 0 0 var(--success-shade);
+  }
+}
+
+.iti__flag {
+  background-image: url("/flags/flags.png");
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .iti__flag {
+    background-image: url("/flags/flags@2x.png");
+  }
+}
+
+.iti.iti--allow-dropdown.intelPhone ul {
+  background-color: inherit;
+}
+
+progress[value] {
+  -webkit-appearance: none;
+  appearance: none;
+  -moz-appearance: none;
+  height: var(--metric-small);
+  width: 9rem;
+}
+
+progress[value]::-webkit-progress-bar {
+  border-radius: 5rem;
+  box-shadow: var(--shadow-inset);
+  border: none;
+  background-color: inherit;
+}
+
+progress[value]::-webkit-progress-value {
+  background-color: var(--sec-color);
+  border-radius: 5rem 0 0 5rem;
+  transition: width 1s;
+}
+
+progress[value].progressed::-webkit-progress-value {
+  border-radius: 5rem;
+}
+
+.notification {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+
+  @mixin notification {
+    padding: var(--metric-smallest);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-small);
+    display: flex;
+    align-items: center;
+    margin: 0;
+    gap: var(--metric-smallest);
+    box-shadow: var(--shadow-inset);
+    position: fixed;
+    top: 0;
+    border: none;
+  }
+
+  & .info {
+    @include notification();
+    background-color: var(--info-lite);
+    color: var(--info-shade);
+  }
+
+  & .error {
+    @include notification();
+    background-color: var(--error-lite);
+    color: var(--error-shade);
+  }
+
+  & .success {
+    @include notification();
+    background-color: var(--success-lite);
+    color: var(--success-shade);
+  }
+
+  & .warn {
+    @include notification();
+    background-color: var(--warn-lite);
+    color: var(--warn-shade);
+  }
+}

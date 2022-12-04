@@ -1,3 +1,8 @@
+@import "$lib/styles/reset.css";
+@import "$lib/styles/utils.scss";
+@import "$lib/styles/buttons.css";
+@import "$lib/styles/form.css";
+
 @font-face {
   font-family: Atkinson;
   font-style: normal;
@@ -20,25 +25,183 @@
   --column-margin-top: 4rem;
   font-family: var(--font-body);
   color: var(--color-text);
+
+  --prim-color: #ff3e00;
+  --prim-lite: #f7845d;
+  --sec-color: #3fcf8e;
+  --sec-lite: #8af1c3;
+  --quad-color: #ffd700;
+  --quad-lite: #e6f872;
+  --white: #fff;
+  --lite: #efefef;
+  --lite-shade: rgb(220, 220, 220);
+  --dark: #263147;
+  --dark-shade: #1a1a1a;
+  --lite-dark: #2f2f2f;
+  --gray: #c4c4c4;
+  --lite-gray: #e0e0e0;
+  --dark-gray: #757575;
+  --darkest-gray: #424242;
+  --text-color: #444;
+  --heading-color: #263147;
+  --bg-color: #fff;
+  --dark-bg-color: #111112;
+  --dim-bg-color: #243447;
+  --blue: #039be5;
+  --lite-blue: #4e7d95;
+  --success-lite: #c4f8c8;
+  --success-shade: #02c56d;
+  --error-lite: #f6cfd4;
+  --error-shade: #6c1616;
+  --info-lite: #bed5f5;
+  --info-shade: #3f94fc;
+  --warn-lite: #f2eda9;
+  --warn-shade: #9a9d03;
+
+  /* shadows */
+  --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.24);
+  --shadow-lg: 0px 3px 8px rgba(0, 0, 0, 0.24);
+  --shadow-top: 0px 0px 10px rgba(0, 0, 0, 0.24);
+  --shadow-inset: var(--dark-gray) 0px 0px 2px 0px inset;
+  --shadow-inset-lite: var(--lite) 0px 0px 2px 0px inset;
+  --shadow-border: var(--lite-shade) 0px 0px 5px 0px inset;
+
+  /* radius */
+  --radius-sm: 0.25rem;
+  --radius-lg: 0.5rem;
+
+  /* border */
+  --solid: 1px solid;
+  --lite-border: var(--solid) var(--lite);
+  --quad-border: var(--solid) var(--quad-color);
+  --prim-border: var(--solid) var(--prim-color);
+  --sec-border: var(--solid) var(--sec-color);
+  --dark-border: var(--solid) var(--dark);
+
+  /* measure - line length */
+  --line-minor: 10ch;
+  --line-compact: 25ch;
+  --line-short: 40ch;
+  --line-long: 60ch;
+
+  /* metric - padding, margin */
+  --metric-nano: 0.25rem;
+  --metric-micro: 0.5rem;
+  --metric-smallest: 0.75rem;
+  --metric-base: 1rem;
+  --metric-small: 1.5rem;
+  --metric-medium: 2rem;
+  --metric-big: 2.5rem;
+  --metric-large: 3rem;
+  --metric-largest: 3.5rem;
+  --metric-major: 5rem;
+
+  /* font family */
+  --font-fam: Atkinson, Helvetica, Verdana, sans-serif;
+
+  /* font weights */
+  --font-normal: 500;
+  --font-bold: 700;
+  --font-bolder: 900;
+
+  /* font sizes */
+  --font-nano: 0.55rem;
+  --font-micro: 0.65rem;
+  --font-smallest: 0.75rem;
+  --font-small: 0.85rem;
+  --font-base: 1rem;
+  --font-medium: 1.15rem;
+}
+
+:root {
+  font-family: var(--font-fam);
+  font-size: calc(var(--font-small) + 1vw);
+  font-weight: var(--font-normal);
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+@media (min-width: 40em) {
+  :root {
+    font-size: calc(0.4em + 1vw);
+  }
+}
+
+svg {
+  display: inline-block;
+}
+
+p {
+  max-width: var(--line-short);
+  margin: 0;
+}
+
+p + :is(h1, h2, h3, h4, h5, h6) {
+  margin-top: var(--metric-medium);
+}
+
+p + p {
+  margin-top: var(--metric-small);
+}
+
+p + ul {
+  margin-bottom: var(--metric-small);
+}
+
+body,
+html {
+  height: 100%;
 }
 
 body {
-  min-height: 100vh;
-  margin: 0;
-  background-attachment: fixed;
-  background-color: var(--color-bg-1);
-  background-size: 100vw 100vh;
-  background-image: radial-gradient(
-      50% 50% at 50% 50%,
-      rgba(255, 255, 255, 0.75) 0%,
-      rgba(255, 255, 255, 0) 100%
-    ),
-    linear-gradient(
-      180deg,
-      var(--color-bg-0) 0%,
-      var(--color-bg-1) 15%,
-      var(--color-bg-2) 50%
-    );
+  display: flex;
+  flex-direction: column;
+  color: var(--lite-gray);
+  background-color: var(--dark-bg-color);
+  gap: var(--metric-medium);
+}
+
+body:has(.light) {
+  color: var(--text-color);
+  background-color: var(--white);
+}
+
+main {
+  background-color: inherit;
+  color: inherit;
+}
+
+hr {
+  background-color: #777;
+  height: 0.02rem;
+  border: none;
+}
+
+h1 + p,
+h2 + p,
+h3 + p,
+h4 + p,
+h5 + p,
+h6 + p {
+  margin-top: var(--metric-micro);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #fff;
+}
+
+body:has(.light) :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--dark);
 }
 
 h1,
@@ -49,11 +212,6 @@ p {
 
 p {
   line-height: 1.5;
-}
-
-a {
-  color: var(--color-theme-1);
-  text-decoration: none;
 }
 
 a:hover {

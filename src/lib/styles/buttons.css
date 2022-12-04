@@ -1,0 +1,57 @@
+button,
+.button,
+.button-sec,
+.button-shadow {
+  font-family: inherit;
+  border-radius: 5rem;
+  padding: 0.3rem var(--metric-smallest);
+  text-decoration: none;
+  font-weight: var(--font-normal);
+  font-size: inherit;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--metric-micro);
+  text-transform: lowercase;
+}
+
+.button,
+button {
+  color: var(--lite);
+  background-color: var(--prim-color);
+}
+
+.button-sec {
+  color: var(--text-color);
+  background-color: var(--sec-color);
+}
+
+.button-quad {
+  color: var(--prim-color);
+  background-color: var(--quad-color);
+}
+
+.button-shadow {
+  box-shadow: var(--shadow-inset);
+  border: none;
+  color: inherit;
+  background-color: inherit;
+}
+
+button:disabled,
+.button:disabled,
+.button-sec:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.button-none {
+  padding: 0;
+  text-decoration: none;
+  text-transform: initial;
+  font-size: var(--font-base);
+  background-color: transparent;
+  border: none;
+  color: inherit;
+}
